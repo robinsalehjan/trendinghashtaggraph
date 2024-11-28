@@ -4,7 +4,9 @@
 
 # Run with Docker
 
-1. Make sure to create a `env.list` file with the content:
+1. Clone the repository: `git clone https://github.com/robinsalehjan/trendinghashtaggraph.git && cd trendinghashtaggraph`
+
+2. Make sure to create a `env.list` file with the contents of:
 ```
 PORT=8080
 REPLACE_OS_VARS=true
@@ -15,13 +17,13 @@ TWITTER_ACCESS_TOKEN=...
 TWITTER_ACCESS_TOKEN_SECRET=...
 ```
 
-Where you replace the `...` with the value of your Phoenix secret and Twitter API credentials:
+Where you replace `...` with the value of your `Phoenix` secret and `Twitter` API credentials:
 - [How to generate a Phoenix secret](https://hexdocs.pm/phoenix/Mix.Tasks.Phx.Gen.Secret.html)
 - [How to get Twitter API credentials](https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html)
 
-2. Pull the image from docker hub: `docker pull robinsalehjan/thg:v1`
+3. Build the image: `docker build -t trendinghashtaggraph .`
 
-3. Run the image: `docker run -d -p 8080:8080 --env-file env.list --rm robinsalehjan/thg` and open `localhost:8080` in your browser
+3. Run the image: `docker run -d -p 8080:8080 --env-file env.list --rm trendinghashtaggraph` and open `localhost:8080` in your browser
 
 # Terminology & Architecture
 
@@ -35,4 +37,4 @@ Supervision strategies:
 - :one_for_all - if a child process terminates, all other child processes are terminated and then all child processes (including the terminated one) are restarted.
 - :rest_for_one - if a child process terminates, the terminated child process and the rest of the children started after it, are terminated and restarted.
 
-![Alt Text](https://github.com/robinsjdotcom/trendinghashtaggraph/blob/master/imgs/architecture.png)
+![architecture](https://github.com/robinsjdotcom/trendinghashtaggraph/blob/master/imgs/architecture.png)
